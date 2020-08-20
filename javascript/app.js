@@ -237,7 +237,7 @@ let handleFileSelect = (event) => {
 };
 
 let retreive = () => {
-  database.ref().on("child_added", function (childSnapshot) {
+  database.ref().orderByChild('vendor').on("child_added", function (childSnapshot) {
     orderArr.push(childSnapshot.val());
 
     let vendor = childSnapshot.val().vendor;
