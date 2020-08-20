@@ -1,12 +1,11 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyBr3yOu5VDq0OIQz1_hHK_xfwBCYB243q8",
-    authDomain: "order-tracker-a1c7e.firebaseapp.com",
-    databaseURL: "https://order-tracker-a1c7e.firebaseio.com",
-    projectId: "order-tracker-a1c7e",
-    storageBucket: "order-tracker-a1c7e.appspot.com",
-    messagingSenderId: "886530519607",
-    appId: "1:886530519607:web:7a4456301e2de1934085b2",
-    measurementId: "G-5GDXKM29FR",
+  apiKey: "AIzaSyDc67Tgv9L1Dlb2tS1OXOuGqSjFkl27-0U",
+  authDomain: "public-order-tracker.firebaseapp.com",
+  databaseURL: "https://public-order-tracker.firebaseio.com",
+  projectId: "public-order-tracker",
+  storageBucket: "public-order-tracker.appspot.com",
+  messagingSenderId: "821228758945",
+  appId: "1:821228758945:web:fcca3363f524a192684de0"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
