@@ -1,6 +1,5 @@
 # order-tracker
 <br/>
-<hr/>
 <h3>This app is designed to track orders placed, their cost and calculate tax when applicable</h3>
 <strong>Technologies Used:</strong>
 <ul>
