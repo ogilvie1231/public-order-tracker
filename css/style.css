@@ -1,0 +1,164 @@
+.form {
+  /* margin: auto; */
+  margin-bottom: 10%;
+  padding: 3%;
+  text-align: center;
+}
+
+
+#user{
+margin-left: auto;
+}
+.signIn {
+  text-align: center;
+  margin: auto;
+}
+.intro-text {
+  text-align: center;
+  background-color: rgb(233, 233, 233);
+  padding: 1%;
+
+}
+button {
+  margin-right: 2%;
+}
+.btn {
+  margin-top: 1%;
+}
+
+.previewImg{
+max-width: 100px;
+float: right;
+position: relative;
+top: -25px;
+}
+
+.form-control {
+  margin-bottom: 1%;
+}
+
+.totalDisp {
+
+  margin-left: 5%;
+}
+
+.order-input {
+  background-color: aliceblue;
+  height: 480px;
+  margin-bottom: 2%;
+}
+.edit-form {
+  height: 500px;
+margin-left: 3%;
+}
+
+hr, .open-text {
+  margin-left: 10%;
+}
+
+.totals {
+  margin: 2%
+}
+.open-orders {
+  border-left: 1px solid rgb(197, 197, 197);
+  height: 1000px;
+  position: absolute;
+  left: -2%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.open-text {
+  text-align: center;
+}
+
+table {
+  margin: 6%;
+  
+}
+
+.glyphicon-calendar {
+  font-size: 15pt;
+}
+.input-group {
+  width: 180px;
+  margin-top: 30px;
+}
+
+#new-order-btn {
+    float: right;
+}
+
+.header {
+  color: rgb(189, 189, 189);
+}
+
+@media only screen and  (max-width: 768px) {
+  .open-orders {
+    border-left: 0px solid rgb(197, 197, 197);
+  }
+}
+
+
+@media only screen and  (max-width: 760px) {
+
+  table {
+    max-width: 95%;
+  }
+
+  .open-orders {
+    border-left: 0px solid rgb(197, 197, 197);
+    height: 1000px;
+    position: absolute;
+    left: -2%;
+    margin-left: -3px;
+    top: 0;
+  }
+
+td, tr, th { display: block;
+max-width: 95%;
+}
+
+thead tr {
+  display: none;
+  /* position: absolute;
+  top: -9999px;
+  left: -9999px; */
+}
+
+td {
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 50%;
+  text-align: left;
+  
+}
+
+tr {
+  border: 1px solid gray;
+  padding: 3%;
+  margin-bottom: 5%;
+}
+
+ td:first-child {
+  margin-top: 10%;
+ }
+
+.totalDisp {
+margin-left: 4%;
+}
+
+.order-input {
+  background-color: aliceblue;
+  height: 480px;
+  display: block;
+  margin: auto;
+  max-width: 90%;
+}
+
+.infoDisp {
+  display: block;
+  max-width: 85%;
+  margin: auto;
+}
+}

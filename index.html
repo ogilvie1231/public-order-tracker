@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Tracker</title>
+
+    <!-- Fire Base -->
+    <!-- <script src="./firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+    <!-- <script src="/__/firebase/7.17.1/firebase-auth.js"></script> -->
+
+    <!-- BootStrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Date Picker -->
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <!-- MomentJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" id="login" href="./login.html">Login</a>
+      <a class="navbar-brand" id="logout" href="./login.html">Logout</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      </button>
+      <p id="user"></p>
+      </div>
+    </nav>
+
+    <div>
+      <h1 class="intro-text">Order Tracker</h1>
+
+      <div class="row">
+        <div class="open-order-div col-lg-8 col-md-10 col-sm-5">
+          <div class="container-fluid border edit-form order-input" id="updateDiv">
+            <form class="form ">
+              <div>
+                <label for="">
+                  Vendor
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="eVendor"
+                  class="form-control"
+                  placeholder="Vendor"
+                />
+              </div>
+              <div>
+                <label for="">
+                  Cost
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="eCost"
+                  class="form-control"
+                  placeholder="Cost"
+                />
+              </div>
+              <div>
+                <label for="">
+                  Date Placed
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="eDatepicker"
+                  class="form-control"
+                  placeholder="Click Here"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Tax</label>
+                <select class="form-control" id="eTaxOption">
+                  <option>Tax Paid</option>
+                  <option>Taxable</option>
+                </select>
+              </div>
+              <div>
+                <label for="file">
+                  File
+                </label>
+                <input
+                onchange='handleFileSelect(event)'
+                  data-label="file"
+                  type="file"
+                  name=""
+                  id="file"
+                  class="form-control-file"
+                  placeholder="file"
+                />
+                <p id="sampleView">
+   
+                </p>
+              </div>
+
+              <button type="submit" id="updateBtn" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+          <!-- <p><button id="batchBtn">Batch Out</button></p> -->
+
+          <h3 class="open-text">Open Orders</h3>
+          <hr />
+          <div>
+            <table class="table table-sm table-hover" id="open-orders">
+              <thead>
+                <tr>
+                  <th scope="col">Vendor</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Tax Status</th>
+                  <th scope="col">View Order</th>
+                  <th scope="col">Complete</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <table>
+              <thead></thead>
+            </table>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <hr />
+                  <div class="totalDisp row">
+                    <strong class="totals" scope="col">
+                      Open Cost:
+                      <p id="openCostDisp"></p>
+                    </strong>
+                    <strong class="totals" scope="col">
+                      Completed Cost:
+                      <p id="completeCostDisp"></p>
+                    </strong>
+                  <strong class="totals" scope="col">
+                    Total Cost:
+                    <p id="totalCostDisp"></p>
+                  </strong>
+                  <strong class="totals" scope="col">
+                    Total Tax:
+                    <p id="totalTaxDisp"></p>
+                  </strong>
+                </div>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <div class="Closed-orders Closed-order-div"></div>
+          <h3 class="open-text">Complete Orders</h3>
+          <div>
+            <table class="table table-sm table-hover" id="complete-orders">
+              <thead>
+                <tr>
+                  <th scope="col">Vendor</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Tax Status</th>
+                  <th scope="col">View Order</th>
+                  <th scope="col">Re-Open</th>
+                 <th scope="col">Close</th>
+                 <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <table>
+              <thead></thead>
+            </table>
+          </div>
+          <h3 class="open-text">Closed Orders</h3>
+          <div>
+            <table class="table table-sm table-hover" id="closed-orders">
+              <thead>
+                <tr>
+                  <th scope="col">Vendor</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Tax Status</th>
+                  <th scope="col">View Order</th>
+                  <th scope="col">Complete</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <table>
+              <thead></thead>
+            </table>
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <div
+          class="infoDisp container border order-input col-lg-3 col-md-10 col-sm-10"
+        >
+          <div class="open-orders"></div>
+          <form class="form">
+            <h3 class="">Add New Order</h3>
+            <div>
+              <label for="">
+                Vendor
+              </label>
+              <input
+                data-label="vendor"
+                type="text"
+                name=""
+                id="vendor"
+                class="form-control"
+                placeholder="Vendor"
+              />
+            </div>
+            <div>
+              <label for="">
+                Cost
+              </label>
+              <input
+                type="text"
+                name=""
+                id="cost"
+                class="form-control"
+                placeholder="Cost"
+              />
+            </div>
+            <div>
+              <label for="">
+                Date Placed
+              </label>
+              <input
+                type="text"
+                name=""
+                id="datepicker"
+                class="form-control"
+                placeholder="Click Here"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Tax</label>
+              <select class="form-control" id="taxOption">
+                <option>Tax Paid</option>
+                <option>Taxable</option>
+              </select>
+            </div>
+            <div>
+              <label for="file">
+                File
+              </label>
+              <input
+              onchange='handleFileSelect(event)'
+                data-label="file"
+                type="file"
+                name=""
+                id="file"
+                class="form-control-file"
+                placeholder="file"
+              />
+            </div>
+            <button type="submit" id="new-order-btn" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./firebase.js"></script>
+  <script src="./javascript/app.js"></script>
+  <script src="./javascript/main.js"></script>
+</html>
