@@ -172,6 +172,7 @@ let closeBtn = (id) => {
   });
 };
 
+// No functionality at this time
 let batchOut = (array) => {
   let sum = 0;
   let taxPer = 0.56;
@@ -189,15 +190,8 @@ let batchOut = (array) => {
 let handleFileSelect = (event) => {
   selectedFile = event.target.files[0];
 
-  // let fileVendor = $("#vendor").val();
-
   fileUpload = selectedFile;
 
-  // Create the file metadata
-  // var metadata = {
-  //   contentType: "image/jpeg",
-  //   name: fileVendor,
-  // };
   var uploadTask = storageRef
     .child("orders/" + fileUpload.name)
     .put(fileUpload);

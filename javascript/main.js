@@ -3,7 +3,7 @@
     "file:///Users/alexogilvie/Desktop/order-tracker/index.html";
   let redirectNetwork = "file:///Volumes/order-tracker/index.html";
   let redirectlive = "https://ogilvie1231.github.io/order-tracker/index.html";
-  let redirectLiveSimple = "https://ogilvie1231.github.io/order-tracker/"
+  let redirectLiveSimple = "https://ogilvie1231.github.io/public-order-tracker/"
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       $("#login").hide();
